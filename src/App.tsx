@@ -1,18 +1,14 @@
-// import {Route, Routes} from 'react-router-dom'
-// import {ProductsPage} from './pages/ProductsPage'
-// import {AboutPage} from './pages/AboutPage'
-// import {Navigation} from './components/Navigation'
+import {FC} from "react";
+import Product from "./components/Product";
+import {products} from "./data/product";
 
-function App() {
-  return (
-    <>
-      {/*<Navigation />*/}
-      {/*<Routes>*/}
-      {/*  <Route path="/" element={ <ProductsPage /> } />*/}
-      {/*  <Route path="/about" element={ <AboutPage /> } />*/}
-      {/*</Routes>*/}
-    </>
-  )
+const App: FC = () => {
+    return (
+        <div className='container mx-auto max-w-2xl pt-5'>
+            <Product product={products[0]}/>
+            <Product product={products[1]}/>
+        </div>
+    );
 }
 
 export default App;
