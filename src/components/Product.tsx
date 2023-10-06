@@ -8,7 +8,7 @@ interface ProductProps {
 const Product: FC<ProductProps> = ({product}) => {
     const [details, setDetails] = useState(false);
 
-    const bntBgClassName = details ? 'bg-blue-400' : 'bg-amber-400';
+    const bntBgClassName = details ? 'bg-amber-400' : 'bg-blue-400';
     const bntClasses = ["py-2", "px-4"];
     bntClasses.push(bntBgClassName);
 
@@ -33,6 +33,7 @@ const Product: FC<ProductProps> = ({product}) => {
 
             {details && <div>
                 <p>{product.description}.</p>
+                <p>Rate: <span style={{fontWeight: 'bold'}}>{product.rating.rate}</span></p>
             </div>}
         </div>
     );
