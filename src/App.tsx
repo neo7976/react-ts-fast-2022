@@ -1,42 +1,19 @@
-import React, {FC, useContext} from "react";
-import Product from "./components/Product";
-import {useProducts} from "./hooks/products";
-import Loader from "./components/Loader";
-import ErrorMsg from "./components/ErrorMsg";
-import CreateProduct from "./components/CreateProduct";
-import {Modal} from "./components/Modal";
-import {IProduct} from "./models";
-import {ModalContext} from "./context/ModalContext";
+import React, {FC} from "react";
+import {Route, Routes} from "react-router-dom";
+import {ProductPage} from "./pages/ProductPage";
+import {AboutPage} from "./pages/AboutPage";
+import {Navigation} from "./components/Navigation";
 
 const App: FC = () => {
-    //Вынесли методы в hooks
-    const {products, error, loading, addProduct} = useProducts();
-    // const [modal, setModal] = useState(false);
-
-
-    const {modal, open, close: closeModal} = useContext(ModalContext);
-    const createHandler = (product: IProduct) => {
-        closeModal();
-        addProduct(product);
-    }
-
     return (
-        <div className='container mx-auto max-w-2xl pt-5'>
-            {loading && <Loader/>}
-            {error && <ErrorMsg error={error}/>}
-            {products.map(product => <Product product={product} key={product.id}/>)}
+        <>
+            <Navigation/>
+            <Routes>
+                <Route path='/' element={<ProductPage/>}/>
+                <Route path='/about' element={<AboutPage/>}/>
+            </Routes>
+        </>
 
-            {modal && <Modal
-                title='Create new Product'
-                onClose={closeModal}>
-                <CreateProduct onCreate={createHandler}/>
-            </Modal>}
-            <button
-                className='fixed bottom-5 right-5 rounded-full bg-red-700 text-white text-2xl px-4 py-1.5'
-                onClick={open}
-            >+
-            </button>
-        </div>
     );
 }
 
