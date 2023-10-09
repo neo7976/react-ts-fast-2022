@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {FC, useContext} from "react";
 import Product from "./components/Product";
 import {useProducts} from "./hooks/products";
 import Loader from "./components/Loader";
@@ -6,14 +6,17 @@ import ErrorMsg from "./components/ErrorMsg";
 import CreateProduct from "./components/CreateProduct";
 import {Modal} from "./components/Modal";
 import {IProduct} from "./models";
+import {ModalContext} from "./context/ModalContext";
 
 const App: FC = () => {
     //Вынесли методы в hooks
     const {products, error, loading, addProduct} = useProducts();
-    const [modal, setModal] = useState(false);
+    // const [modal, setModal] = useState(false);
 
+
+    const {modal, open, close: closeModal} = useContext(ModalContext);
     const createHandler = (product: IProduct) => {
-        setModal(false);
+        closeModal();
         addProduct(product);
     }
 
@@ -25,13 +28,14 @@ const App: FC = () => {
 
             {modal && <Modal
                 title='Create new Product'
-                onClose={() => setModal(false)}>
+                onClose={closeModal}>
                 <CreateProduct onCreate={createHandler}/>
             </Modal>}
             <button
                 className='fixed bottom-5 right-5 rounded-full bg-red-700 text-white text-2xl px-4 py-1.5'
-                onClick={() => setModal(true)}
-            >+</button>
+                onClick={open}
+            >+
+            </button>
         </div>
     );
 }
