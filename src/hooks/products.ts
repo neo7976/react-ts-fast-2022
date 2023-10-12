@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {IProduct} from "../models";
+import {IProduct} from "../modals/models";
 import axios, {AxiosError} from "axios";
 
 export function useProducts() {

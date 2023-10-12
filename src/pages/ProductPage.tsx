@@ -6,7 +6,7 @@ import CreateProduct from "../components/CreateProduct";
 import React, {useContext} from "react";
 import {useProducts} from "../hooks/products";
 import {ModalContext} from "../context/ModalContext";
-import {IProduct} from "../models";
+import {IProduct} from "../modals/models";
 
 export function ProductPage () {
     //Вынесли методы в hooks

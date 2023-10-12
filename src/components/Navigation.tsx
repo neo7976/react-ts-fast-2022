@@ -7,7 +7,8 @@ return (
         <span className='font-bold'>React 2022</span>
         <span>
             <Link className='mr-2' to='/'>Products</Link>
-            <Link to='/about'>About</Link>
+            <Link className='mr-2' to='/about'>About</Link>
+            <Link className='mr-2' to='/marvels'>Marvels</Link>
         </span>
     </nav>
 );

@@ -1,5 +1,5 @@
 import React, {FC, useState} from "react";
-import {IProduct} from "../models";
+import {IProduct} from "../modals/models";
 import axios from "axios";
 import ErrorMsg from "./ErrorMsg";
 
