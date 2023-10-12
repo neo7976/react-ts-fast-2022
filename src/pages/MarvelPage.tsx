@@ -1,13 +1,25 @@
-import React from "react";
-import {useMarvels} from "../hooks/marvels";
+import React, {ChangeEvent, useState} from "react";
+import {getMarvelKey, useMarvels} from "../hooks/marvels";
 import Marvel from "../components/Marvel";
 import Loader from "../components/Loader";
 import ErrorMsg from "../components/ErrorMsg";
 
 export function MarvelPage() {
-    //Вынесли методы в hooks
-    const {marvels, error, loading} = useMarvels();
+    const key = getMarvelKey();
+    const initUrl = `https://gateway.marvel.com/v1/public/characters?${key}`;
 
+    const [url, setUrl] =
+        useState(initUrl);
+    //Вынесли методы в hooks
+    const {marvels, error, loading} = useMarvels(url);
+
+    const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.value.trim() === '') {
+            setUrl(initUrl);
+        } else {
+            setUrl(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${e.target.value}&${key}`)
+        }
+    };
     return (
         <>
             <div className="header">
@@ -16,11 +28,10 @@ export function MarvelPage() {
                 </div>
                 <div className="search-bar">
                     <img src="./images/marvel/logo.jpg" alt="logo"/>
-                    {/*<input type="search" placeholder='Search Here'*/}
-                    {/*       className='search'*/}
-                    {/*       onChange={e => setSearch(e.target.value)}*/}
-                    {/*       onKeyPress={searchMarvel}*/}
-                    {/*/>*/}
+                    <input type="search" placeholder='Search Here'
+                           className='search'
+                           onChange={changeHandler}
+                    />
                 </div>
             </div>
             <div className="content">

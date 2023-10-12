@@ -2,14 +2,23 @@ import {useEffect, useState} from "react";
 import axios, {AxiosError} from "axios";
 import {IMarvel, IMarvelRoot} from "../modals/modalsMarvel";
 
+/*
+getMarvelKey() - содержит уникальный ключ
+для получения данных с сервера при помощи генерации
+https://developer.marvel.com/documentation/authorization
+Api сайта для различных запросов
+https://developer.marvel.com/docs
+* */
 
+export function getMarvelKey() {
+    return 'ts=3&apikey=5f93e7f9f9bea56f0834df37270f5b79&hash=62739f7ffc11c67b3f18a00cfc8ce6ce';
+}
 
-export function useMarvels() {
+export function useMarvels(url: string) {
     const [marvels, setMarvels] = useState<IMarvel[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const [url, setUrl] =
-        useState('https://gateway.marvel.com/v1/public/characters?ts=3&apikey=5f93e7f9f9bea56f0834df37270f5b79&hash=62739f7ffc11c67b3f18a00cfc8ce6ce');
+
 
     async function fetchCharacters() {
         try {
@@ -26,22 +35,23 @@ export function useMarvels() {
         }
     }
 
-
     useEffect(() => {
         fetchCharacters()
-    }, [])
+    }, [url])
     return {marvels: marvels, error, loading};
 }
 
-export function useMarvelById(id:any) {
+export function useMarvelById(id: any) {
     const [character, setCharacter] = useState<IMarvel>();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+
     async function fetchCharacterById() {
+        const key = getMarvelKey();
         try {
             setError('');
             setLoading(true);
-            const response = await axios.get<IMarvelRoot>(`https://gateway.marvel.com:443/v1/public/characters/${id}?ts=3&apikey=5f93e7f9f9bea56f0834df37270f5b79&hash=62739f7ffc11c67b3f18a00cfc8ce6ce`);
+            const response = await axios.get<IMarvelRoot>(`https://gateway.marvel.com:443/v1/public/characters/${id}?${key}`);
             console.log(response.data.data.results);
             setCharacter(response.data.data.results[0]);
             setLoading(false);
@@ -51,6 +61,7 @@ export function useMarvelById(id:any) {
             setError(error.message);
         }
     }
+
     useEffect(() => {
         fetchCharacterById()
     }, [])
