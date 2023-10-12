@@ -1,5 +1,5 @@
 import {FC, useState} from "react";
-import {IProduct} from "../models";
+import {IProduct} from "../modals/models";
 
 interface ProductProps {
     product: IProduct
