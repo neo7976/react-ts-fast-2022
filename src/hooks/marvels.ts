@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axios, {AxiosError} from "axios";
 import {IMarvel, IMarvelRoot} from "../modals/modalsMarvel";
+import {ComicsRoot, IMarvelComics} from "../modals/modalsMarvelComics";
 
 /*
 getMarvelKey() - содержит уникальный ключ
@@ -67,5 +68,33 @@ export function useMarvelById(id: any) {
     }, [])
 
     return {character: character, error, loading};
+}
+
+export function useMarvelComicsById(id: any) {
+    const [comics, setComics] = useState<IMarvelComics[]>([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    async function fetchCharacterById() {
+        const key = getMarvelKey();
+        try {
+            setError('');
+            setLoading(true);
+            const response = await axios.get<ComicsRoot>(`https://gateway.marvel.com:443/v1/public/comics/${id}?${key}`);
+            console.log(response.data.data.results);
+            setComics(response.data.data.results);
+            setLoading(false);
+        } catch (e: unknown) {
+            const error = e as AxiosError;
+            setLoading(false);
+            setError(error.message);
+        }
+    }
+
+    useEffect(() => {
+        fetchCharacterById()
+    }, [])
+
+    return {comics: comics, error, loading};
 }
 

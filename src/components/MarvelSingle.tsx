@@ -1,7 +1,8 @@
 import React, {FC} from 'react';
 import {useParams} from "react-router-dom";
 import {useMarvelById} from "../hooks/marvels";
-import  "./style/marvel/marvelStyle.css";
+import "./style/marvel/marvelStyle.css";
+import Comics from "./Comics";
 
 const MarvelSingle: FC = () => {
 
@@ -20,6 +21,7 @@ const MarvelSingle: FC = () => {
             <div className="left-box">
                 <h1>{character?.name}</h1>
                 <h4>{character?.description}</h4>
+                {character?.comics.items.map(comics => <Comics comicsItem={comics}/>)}
             </div>
         </div>
     );
