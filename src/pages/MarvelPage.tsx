@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useMarvels} from "../hooks/marvels";
 import Marvel from "../components/Marvel";
 import Loader from "../components/Loader";
@@ -6,7 +6,9 @@ import ErrorMsg from "../components/ErrorMsg";
 
 export function MarvelPage() {
     //Вынесли методы в hooks
-    const {marvels, error, loading} = useMarvels();
+    const [url, setUrl] =
+        useState('https://gateway.marvel.com/v1/public/characters?ts=3&apikey=5f93e7f9f9bea56f0834df37270f5b79&hash=62739f7ffc11c67b3f18a00cfc8ce6ce');
+    const {marvels, error, loading} = useMarvels(url);
 
     return (
         <>

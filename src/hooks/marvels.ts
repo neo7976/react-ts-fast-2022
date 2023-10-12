@@ -3,13 +3,11 @@ import axios, {AxiosError} from "axios";
 import {IMarvel, IMarvelRoot} from "../modals/modalsMarvel";
 
 
-
-export function useMarvels() {
+export function useMarvels(url: string) {
     const [marvels, setMarvels] = useState<IMarvel[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const [url, setUrl] =
-        useState('https://gateway.marvel.com/v1/public/characters?ts=3&apikey=5f93e7f9f9bea56f0834df37270f5b79&hash=62739f7ffc11c67b3f18a00cfc8ce6ce');
+
 
     async function fetchCharacters() {
         try {
@@ -33,10 +31,11 @@ export function useMarvels() {
     return {marvels: marvels, error, loading};
 }
 
-export function useMarvelById(id:any) {
+export function useMarvelById(id: any) {
     const [character, setCharacter] = useState<IMarvel>();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+
     async function fetchCharacterById() {
         try {
             setError('');
@@ -51,6 +50,7 @@ export function useMarvelById(id:any) {
             setError(error.message);
         }
     }
+
     useEffect(() => {
         fetchCharacterById()
     }, [])
