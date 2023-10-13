@@ -5,6 +5,7 @@ import {AboutPage} from "./pages/AboutPage";
 import {Navigation} from "./components/Navigation";
 import {MarvelPage} from "./pages/MarvelPage";
 import MarvelSingle from "./components/MarvelSingle";
+import ComicsSingle from "./components/ComicsSingle";
 
 const App: FC = () => {
     return (
@@ -15,6 +16,7 @@ const App: FC = () => {
                 <Route path='/about' element={<AboutPage/>}/>
                 <Route path='/marvels' element={<MarvelPage/>}/>
                 <Route path='/:id' element={<MarvelSingle/>}/>
+                <Route path='/comics/:id' element={<ComicsSingle/>}/>
             </Routes>
         </>
 

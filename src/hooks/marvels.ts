@@ -26,7 +26,6 @@ export function useMarvels(url: string) {
             setError('');
             setLoading(true);
             const response = await axios.get<IMarvelRoot>(url);
-            console.log(response.data.data.results);
             setMarvels(response.data.data.results);
             setLoading(false);
         } catch (e: unknown) {
@@ -70,7 +69,7 @@ export function useMarvelById(id: any) {
     return {character: character, error, loading};
 }
 
-export function useMarvelComicsById(id: any) {
+export function useMarvelComicsByCharacterId(id: any) {
     const [comics, setComics] = useState<IMarvelComics[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -80,9 +79,36 @@ export function useMarvelComicsById(id: any) {
         try {
             setError('');
             setLoading(true);
-            const response = await axios.get<ComicsRoot>(`https://gateway.marvel.com:443/v1/public/comics/${id}?${key}`);
-            console.log(response.data.data.results);
+            const response = await axios.get<ComicsRoot>(`https://gateway.marvel.com/v1/public/characters/${id}/comics?${key}`);
             setComics(response.data.data.results);
+            setLoading(false);
+        } catch (e: unknown) {
+            const error = e as AxiosError;
+            setLoading(false);
+            setError(error.message);
+        }
+    }
+
+    useEffect(() => {
+        fetchCharacterById()
+    }, [])
+
+    return {comics: comics, error, loading};
+}
+
+export function useMarvelComicsById(id: any) {
+    const [comics, setComics] = useState<IMarvelComics>();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    async function fetchCharacterById() {
+        const key = getMarvelKey();
+        try {
+            setError('');
+            setLoading(true);
+            const response = await axios.get<ComicsRoot>(`https://gateway.marvel.com/v1/public/comics/${id}?${key}`);
+            console.log("Комиксы", response.data.data.results);
+            setComics(response.data.data.results[0]);
             setLoading(false);
         } catch (e: unknown) {
             const error = e as AxiosError;

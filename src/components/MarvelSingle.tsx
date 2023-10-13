@@ -25,7 +25,7 @@ const MarvelSingle: FC = () => {
                 </div>
             </div>
             <div className="content">
-                {character?.comics.items.map(comics => <Comics comicsItem={comics}/>)}
+                <Comics id={character?.id!} key={character?.id}/>)
             </div>
         </>
 
