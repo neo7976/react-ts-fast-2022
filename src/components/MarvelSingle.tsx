@@ -10,21 +10,28 @@ const MarvelSingle: FC = () => {
     const {character, error, loading} = useMarvelById(id);
 
     return (
-        <div className='box-content'>
-            <div className={'right-box'}>
-                <img
-                    src={`${character?.thumbnail.path}.${character?.thumbnail.extension}`}
-                    alt={character?.name}
-                    className="w-1/6"
-                />
+        <>
+            <div className='box-content'>
+                <div className={'right-box'}>
+                    <img
+                        src={`${character?.thumbnail.path}.${character?.thumbnail.extension}`}
+                        alt={character?.name}
+                        className="w-1/6"
+                    />
+                </div>
+                <div className="left-box">
+                    <h1>{character?.name}</h1>
+                    <h4>{character?.description}</h4>
+                </div>
             </div>
-            <div className="left-box">
-                <h1>{character?.name}</h1>
-                <h4>{character?.description}</h4>
+            <div className="content">
                 {character?.comics.items.map(comics => <Comics comicsItem={comics}/>)}
             </div>
-        </div>
-    );
+        </>
+
+
+    )
+        ;
 };
 
 export default MarvelSingle;
