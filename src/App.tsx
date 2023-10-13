@@ -4,8 +4,8 @@ import {ProductPage} from "./pages/ProductPage";
 import {AboutPage} from "./pages/AboutPage";
 import {Navigation} from "./components/Navigation";
 import {MarvelPage} from "./pages/MarvelPage";
-import MarvelSingle from "./components/MarvelSingle";
-import ComicsSingle from "./components/ComicsSingle";
+import MarvelCharacterPage from "./pages/MarvelCharacterPage";
+import MarvelComicsPage from "./pages/MarvelComicsPage";
 
 const App: FC = () => {
     return (
@@ -15,8 +15,8 @@ const App: FC = () => {
                 <Route path='/' element={<ProductPage/>}/>
                 <Route path='/about' element={<AboutPage/>}/>
                 <Route path='/marvels' element={<MarvelPage/>}/>
-                <Route path='marvel/character/:id' element={<MarvelSingle/>}/>
-                <Route path='marvel/comics/:id' element={<ComicsSingle/>}/>
+                <Route path='marvel/character/:id' element={<MarvelCharacterPage/>}/>
+                <Route path='marvel/comics/:id' element={<MarvelComicsPage/>}/>
             </Routes>
         </>
     );

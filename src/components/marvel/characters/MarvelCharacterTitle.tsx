@@ -1,18 +1,14 @@
-import {FC, useState} from "react";
-import {IMarvel} from "../modals/modalsMarvel";
+import {FC} from "react";
+
 import {useNavigate} from "react-router-dom";
+import {IMarvel} from "../../../modals/modalsMarvel";
 
 interface MarvelProps {
     character: IMarvel
 }
 
-const Marvel: FC<MarvelProps> = ({character}) => {
-    const [details, setDetails] = useState(false);
+const MarvelCharacterTitle: FC<MarvelProps> = ({character}) => {
     let navigate = useNavigate();
-
-    const bntBgClassName = details ? 'bg-amber-400' : 'bg-blue-400';
-    const bntClasses = ["py-2", "px-4"];
-    bntClasses.push(bntBgClassName);
 
     return (
         <>
@@ -25,9 +21,7 @@ const Marvel: FC<MarvelProps> = ({character}) => {
                 </div>
             </div>
         </>
-
-
     );
 }
 
-export default Marvel;
+export default MarvelCharacterTitle;

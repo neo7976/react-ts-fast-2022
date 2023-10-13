@@ -1,10 +1,12 @@
 import React, {FC} from 'react';
 import {useParams} from "react-router-dom";
 import {useMarvelById} from "../hooks/marvels";
-import "./style/marvel/marvelStyle.css";
-import Comics from "./Comics";
+import "../components/style/marvel/marvelStyle.css";
+import Comics from "../components/marvel/comics/Comics";
+import ErrorMsg from "../components/ErrorMsg";
+import Loader from "../components/Loader";
 
-const MarvelSingle: FC = () => {
+const MarvelCharacterPage: FC = () => {
 
     const {id} = useParams();
     const {character, error, loading} = useMarvelById(id);
@@ -12,6 +14,8 @@ const MarvelSingle: FC = () => {
     return (
         <>
             <div className='box-content'>
+                {error && <ErrorMsg error={error}/>}
+                {loading && <Loader/>}
                 <div className={'right-box'}>
                     <img
                         src={`${character?.thumbnail.path}.${character?.thumbnail.extension}`}
@@ -34,4 +38,4 @@ const MarvelSingle: FC = () => {
         ;
 };
 
-export default MarvelSingle;
+export default MarvelCharacterPage;

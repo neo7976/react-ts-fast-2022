@@ -1,8 +1,8 @@
 import React, {ChangeEvent, useState} from "react";
 import {getMarvelKey, useMarvels} from "../hooks/marvels";
-import Marvel from "../components/Marvel";
 import Loader from "../components/Loader";
 import ErrorMsg from "../components/ErrorMsg";
+import MarvelCharacterTitle from "../components/marvel/characters/MarvelCharacterTitle";
 
 export function MarvelPage() {
     const key = getMarvelKey();
@@ -37,7 +37,7 @@ export function MarvelPage() {
             <div className="content">
                 {loading && <Loader/>}
                 {error && <ErrorMsg error={error}/>}
-                {marvels.map(marvel => <Marvel
+                {marvels.map(marvel => <MarvelCharacterTitle
                     character={marvel}
                     key={marvel.id}
                 />)}

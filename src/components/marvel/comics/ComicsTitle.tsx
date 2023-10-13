@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {IMarvelComics} from "../modals/modalsMarvelComics";
+import {IMarvelComics} from "../../../modals/modalsMarvelComics";
 import {useNavigate} from "react-router-dom";
 
 interface ComicsTitleProps {

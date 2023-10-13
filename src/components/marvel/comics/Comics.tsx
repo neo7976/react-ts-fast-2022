@@ -1,12 +1,10 @@
 import React, {FC} from 'react';
-import {ItemComics} from "../modals/modalsMarvel";
-import {getMarvelKey, useMarvelComicsByCharacterId} from "../hooks/marvels";
-import Loader from "./Loader";
-import ErrorMsg from "./ErrorMsg";
+import {useMarvelComicsByCharacterId} from "../../../hooks/marvels";
+import Loader from "../../Loader";
+import ErrorMsg from "../../ErrorMsg";
 import ComicsTitle from "./ComicsTitle";
 
 interface ComicsProps {
-    comicsItem?: ItemComics
     id: number
 }
 

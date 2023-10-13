@@ -1,7 +1,7 @@
 import React, {FC, useState} from "react";
-import {IProduct} from "../modals/models";
+import {IProduct} from "../../modals/models";
 import axios from "axios";
-import ErrorMsg from "./ErrorMsg";
+import ErrorMsg from "../ErrorMsg";
 
 interface CreateProductProps {
     onCreate: (product: IProduct) => void
