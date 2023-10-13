@@ -37,7 +37,7 @@ export function useMarvels(url: string) {
 
     useEffect(() => {
         fetchCharacters()
-    })
+    }, [])
     return {marvels: marvels, error, loading};
 }
 
@@ -64,7 +64,7 @@ export function useMarvelById(id: any) {
 
     useEffect(() => {
         fetchCharacterById()
-    })
+    },[])
 
     return {character: character, error, loading};
 }
@@ -91,7 +91,7 @@ export function useMarvelComicsByCharacterId(id: any) {
 
     useEffect(() => {
         fetchComicsByCharacterId()
-    })
+    }, [])
 
     return {comics: comics, error, loading};
 }
@@ -119,7 +119,7 @@ export function useMarvelComicsById(id: any) {
 
     useEffect(() => {
         fetchComicsById()
-    })
+    }, [])
 
     return {comics: comics, error, loading};
 }
