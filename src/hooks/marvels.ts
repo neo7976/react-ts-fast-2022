@@ -51,7 +51,7 @@ export function useMarvelById(id: any) {
         try {
             setError('');
             setLoading(true);
-            const response = await axios.get<IMarvelRoot>(`https://gateway.marvel.com:443/v1/public/characters/${id}?${key}`);
+            const response = await axios.get<IMarvelRoot>(`https://gateway.marvel.com/v1/public/characters/${id}?${key}`);
             console.log(response.data.data.results);
             setCharacter(response.data.data.results[0]);
             setLoading(false);

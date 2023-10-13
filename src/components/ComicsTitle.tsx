@@ -11,7 +11,7 @@ const ComicsTitle:FC<ComicsTitleProps> = ({comicsItem}) => {
     return (
     <>
         <div className="card" key={comicsItem.id}
-             onClick={() => navigate(`/comics/${comicsItem.id}`)}
+             onClick={() => navigate(`/marvel/comics/${comicsItem.id}`)}
         >
             <img src={`${comicsItem.thumbnail.path}.${comicsItem.thumbnail.extension}`} alt={comicsItem.title} />
             <div className="title">

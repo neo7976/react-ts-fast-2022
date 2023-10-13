@@ -15,11 +15,10 @@ const App: FC = () => {
                 <Route path='/' element={<ProductPage/>}/>
                 <Route path='/about' element={<AboutPage/>}/>
                 <Route path='/marvels' element={<MarvelPage/>}/>
-                <Route path='/:id' element={<MarvelSingle/>}/>
-                <Route path='/comics/:id' element={<ComicsSingle/>}/>
+                <Route path='marvel/character/:id' element={<MarvelSingle/>}/>
+                <Route path='marvel/comics/:id' element={<ComicsSingle/>}/>
             </Routes>
         </>
-
     );
 }
 

@@ -16,8 +16,8 @@ const Marvel: FC<MarvelProps> = ({character}) => {
 
     return (
         <>
-            <div className="card" key={character.id}
-                 onClick={() => navigate(`/${character.id}`)}
+            <div className="card" key={`character.id`}
+                 onClick={() => navigate(`/marvel/character/${character.id}`)}
             >
                 <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} />
                 <div className="title">
