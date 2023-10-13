@@ -41,6 +41,23 @@ body {
     grid-gap: 1rem
 }
 
+.content-comics {
+    width: 200%;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1rem
+}
+
+.content-price {
+    margin: 1rem auto;
+    display: flex;
+    /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
+    grid-gap: 2px;
+    align-items: center;
+    flex-direction: row;
+}
+
 .card {
     background-color: #B41F23;
     color: white;

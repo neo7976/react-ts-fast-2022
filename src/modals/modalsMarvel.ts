@@ -23,7 +23,7 @@ export interface IMarvel {
     modified: string
     thumbnail: Thumbnail
     resourceURI: string
-    comics: Comics
+    comics: IComics
     series: Series
     stories: Stories
     events: Events
@@ -35,14 +35,14 @@ export interface Thumbnail {
     extension: string
 }
 
-export interface Comics {
+export interface IComics {
     available: number
     collectionURI: string
-    items: Item[]
+    items: ItemComics[]
     returned: number
 }
 
-export interface Item {
+export interface ItemComics {
     resourceURI: string
     name: string
 }

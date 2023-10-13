@@ -1,8 +1,8 @@
 import Loader from "../components/Loader";
 import ErrorMsg from "../components/ErrorMsg";
-import Product from "../components/Product";
+import Product from "../components/product/Product";
 import {Modal} from "../components/Modal";
-import CreateProduct from "../components/CreateProduct";
+import CreateProduct from "../components/product/CreateProduct";
 import React, {useContext} from "react";
 import {useProducts} from "../hooks/products";
 import {ModalContext} from "../context/ModalContext";
