@@ -1,12 +1,16 @@
 import React, {FC, SyntheticEvent, useState} from 'react';
 import Loader from "../components/Loader";
 import {useTodos} from "../hooks/useTodos";
-import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {useIsFetching, useMutation, useQueryClient} from "@tanstack/react-query";
 import '../index.css'
 import todoService from "../services/todo.service";
 
 const TodoQueryPage: FC = () => {
     const {isLoading, data, refetch} = useTodos();
+
+    //Сколько раз произошло обновление данных
+    const countFetching = useIsFetching();
+
     const [title, setTitle] = useState('');
 
     const {mutate} = useMutation(['create todo'], (title: string) => todoService.create(title), {
@@ -33,9 +37,13 @@ const TodoQueryPage: FC = () => {
             gridTemplateColumns: '1fr 1fr',
             gap: 20
         }}>
-            <div>
-                <h2>Create Todo:</h2>
-                <form onSubmit={submitHandler}>
+            <div className={'text-white mt-2'}>
+                {!!countFetching &&  <h3 className={'ml-4'}>Count fetching: {countFetching}</h3>}
+                <h2 className={'ml-4 mt-2'}>Create Todo:</h2>
+                <form
+                    className={'mt-2'}
+                    onSubmit={submitHandler}
+                >
                     <div>
                         <input type="text"
                                onChange={e => setTitle(e.target.value)}
