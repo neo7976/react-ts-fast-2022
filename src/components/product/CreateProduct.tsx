@@ -1,7 +1,7 @@
-import React, {FC, useState} from "react";
 import {IProduct} from "../../modals/models";
 import axios from "axios";
 import ErrorMsg from "../ErrorMsg";
+import React, {FC, useState} from "react";
 
 interface CreateProductProps {
     onCreate: (product: IProduct) => void
@@ -37,7 +37,7 @@ const CreateProduct: FC<CreateProductProps> = ({onCreate}) => {
         onCreate(response.data);
     };
 
-    const changeHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     }
 

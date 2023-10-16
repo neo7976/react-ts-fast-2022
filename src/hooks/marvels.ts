@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
 import axios, {AxiosError} from "axios";
 import {IMarvel, IMarvelRoot} from "../modals/modalsMarvel";
 import {ComicsRoot, IMarvelComics} from "../modals/modalsMarvelComics";
+import {useEffect, useState} from "react";
 
 /*
 getMarvelKey() - содержит уникальный ключ
