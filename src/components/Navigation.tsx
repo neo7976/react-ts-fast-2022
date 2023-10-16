@@ -8,7 +8,7 @@ return (
         <span>
             <Link className='mr-2' to='/'>Products</Link>
             <Link className='mr-2' to='/marvels'>Marvels</Link>
-            <Link className='mr-2' to='/about'>About</Link>
+            <Link className='mr-2' to='/todo'>Todo</Link>
         </span>
     </nav>
 );
