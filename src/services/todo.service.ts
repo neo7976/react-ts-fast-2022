@@ -5,7 +5,7 @@ class TodoService {
     private URL = `https://jsonplaceholder.typicode.com`;
 
     async getAll() {
-        return axios.get<ITodo[]>(`${this.URL}/todos`)
+        return axios.get<ITodo[]>(`${this.URL}/todos/`)
     }
 
     async getById(id: string) {
