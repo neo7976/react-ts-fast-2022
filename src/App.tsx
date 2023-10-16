@@ -6,7 +6,7 @@ import {MarvelPage} from "./pages/MarvelPage";
 import MarvelCharacterPage from "./pages/MarvelCharacterPage";
 import MarvelComicsPage from "./pages/MarvelComicsPage";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import TodoQueryApp from "./components/TodoQueryApp";
+import TodoQueryPage from "./pages/TodoQueryPage";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -23,7 +23,7 @@ const App: FC = () => {
                 <Route path='/' element={<ProductPage/>}/>
                 <Route path='/todo' element={
                     <QueryClientProvider client={queryClient}>
-                        <TodoQueryApp/> </QueryClientProvider>}/>
+                        <TodoQueryPage/> </QueryClientProvider>}/>
                 <Route path='/marvels' element={<MarvelPage/>}/>
                 <Route path='marvel/character/:id' element={<MarvelCharacterPage/>}/>
                 <Route path='marvel/comics/:id' element={<MarvelComicsPage/>}/>

@@ -7,7 +7,7 @@ export const useTodos = () => {
             //дестуктуризация, чтобы не писать data.data
             select: ({data}) => data,
             //Количество повторных запросов до появления ошибки
-            retry: 1
+            retry: 1,
             // enabled:true
             /*            onSuccess(data) {
                             alert(data[0].title);
