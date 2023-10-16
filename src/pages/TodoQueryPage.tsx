@@ -56,7 +56,7 @@ const TodoQueryPage: FC = () => {
             </div>
             <div className={'todo'}>
                 <h1>TODOS:</h1>
-                {/*//Для Обновления данных*/}
+                {/*Для Обновления данных*/}
                 {/*<button className={'text-white'} onClick={() => queryClient.invalidateQueries(['todos'])}>*/}
                 {/*    Refresh*/}
                 {/*</button>*/}
