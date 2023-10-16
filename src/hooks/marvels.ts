@@ -37,7 +37,7 @@ export function useMarvels(url: string) {
 
     useEffect(() => {
         fetchCharacters()
-    }, [])
+    }, [url])
     return {marvels: marvels, error, loading};
 }
 

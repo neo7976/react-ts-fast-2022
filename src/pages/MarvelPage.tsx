@@ -13,7 +13,7 @@ export function MarvelPage() {
     //Вынесли методы в hooks
     const {marvels, error, loading} = useMarvels(url);
 
-    const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value.trim() === '') {
             setUrl(initUrl);
         } else {
